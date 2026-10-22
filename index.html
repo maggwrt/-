@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3654d7">
+  <meta name="description" content="Зов Земли — учебная экспедиция с роботом ЛУМОЙ. Межпредметный проект по физике и информатике для 6 класса.">
+  <title>Зов Земли — экспедиция с ЛУМОЙ</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержанию</a>
+  <div class="shell">
+    <header class="header">
+      <a class="brand" href="#main"><span class="signal-logo" aria-hidden="true">((●))</span> Зов Земли</a>
+      <nav aria-label="Основная навигация">
+        <a href="#route">Экспедиция</a><button type="button" data-open="atlas">Атлас</button><button type="button" data-open="team">Команда</button>
+      </nav>
+      <button type="button" class="teacher button-outline" data-open="teacher">Для учителя <span aria-hidden="true">↗</span></button>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Межпредметный проект · 6 класс</p>
+          <h1 id="hero-title">Наблюдать. Проверять.<br>Открывать вместе.</h1>
+          <p class="intro">Помогите ЛУМЕ восстановить пять сигналов.<br class="desktop-break"> Исследуйте явления и сохраняйте открытия в атлас.</p>
+          <button class="button-primary" type="button" data-open="mission">Начать экспедицию <span aria-hidden="true">→</span></button>
+          <div class="hero-tags"><span>⌁ &nbsp; Физика + информатика</span><span>♧ &nbsp; Работа в команде</span></div>
+        </div>
+        <figure class="hero-art">
+          <svg viewBox="875 79 550 400" role="img" aria-label="ЛУМА — рисованный робот-исследователь с антенной, рюкзаком и блокнотом">
+            <image href="assets/concept.png" width="1536" height="1024" />
+          </svg>
+        </figure>
+      </section>
+
+      <section class="route" id="route" aria-labelledby="route-title">
+        <div class="section-heading"><h2 id="route-title">Маршрут экспедиции</h2><p id="progress">Восстановлено 0 из 5 сигналов</p></div>
+        <ol class="stations">
+          <li><button type="button" class="station active" data-open="mission"><span class="station-number">01</span><svg viewBox="0 0 150 70" aria-hidden="true"><path d="M5 55 45 21 66 42 94 14 145 54M24 60h98M12 43h42m31 10h53M49 25l8 12m35-18 11 16"/><path d="M19 58V33m-9 14 9-14 10 14M125 58V30m-11 17 11-17 12 17"/></svg><strong>Туманное поле</strong><span class="status" id="first-status">Можно начать</span></button></li>
+          <li><button type="button" class="station" data-station="Башня Часовщика"><span class="station-number">02</span><svg viewBox="0 0 150 70" aria-hidden="true"><path d="M57 63V23h36v40M51 23 75 5l24 18M69 63V50h12v13M28 64h94M20 58V29m-10 18 10-18 10 18M121 62V32m-10 18 10-18 10 18"/><circle cx="75" cy="35" r="8"/><path d="M75 29v6l5 2"/></svg><strong>Башня Часовщика</strong><span class="station-note">Скоро</span></button></li>
+          <li><button type="button" class="station" data-station="Горный перевал"><span class="station-number">03</span><svg viewBox="0 0 150 70" aria-hidden="true"><path d="M4 64 48 11l24 32 23-35 50 57M32 31l16-20 16 22-15-7-8 10M78 32 95 8l20 24-16-8-8 13M63 63l18-21 18 22M19 65h114"/></svg><strong>Горный перевал</strong><span class="station-note">Скоро</span></button></li>
+          <li><button type="button" class="station" data-station="Подводная пещера"><span class="station-number">04</span><svg viewBox="0 0 150 70" aria-hidden="true"><path d="M35 61 48 23l20-7 21 8 21 38M57 62l5-25 16-8 14 33M3 48q9-8 18 0t18 0M100 49q10-8 20 0t20 0M2 61q10-8 20 0t20 0M106 63q9-8 18 0t18 0"/></svg><strong>Подводная пещера</strong><span class="station-note">Скоро</span></button></li>
+          <li><button type="button" class="station" data-station="Пещера Теней"><span class="station-number">05</span><svg viewBox="0 0 150 70" aria-hidden="true"><path d="M30 63 23 37l13-16 17 15 9 27M62 63 55 15 75 3l19 17-8 43M86 63l12-29 18-11 12 18-15 22M55 15l20 16 19-11M75 31v32M23 37l20 9 10-10M98 34l12 13 18-6M19 65h116"/></svg><strong>Пещера Теней</strong><span class="station-note">Скоро</span></button></li>
+        </ol>
+      </section>
+
+      <div class="cards">
+        <section class="mission-card" aria-labelledby="mission-title">
+          <div><p class="eyebrow">Миссия 01</p><h2 id="mission-title">Сообщение сквозь туман</h2><p>Расшифруйте сообщение и проверьте маршрут ЛУМЫ.</p><div class="steps"><span><b>1</b> Расшифровать</span><span aria-hidden="true">→</span><span><b>2</b> Исследовать</span></div><button class="text-link" type="button" data-open="mission">Открыть миссию →</button></div>
+          <div class="cipher-art" aria-hidden="true"><div class="cipher-circle"><span>А Б В Г Д Е Ж З И</span><strong>+3</strong><span>К Л М Н О П Р С Т</span></div><p>У каждого сообщения<br>есть свой ключ.</p></div>
+        </section>
+        <section class="atlas-card"><div class="book-icon" aria-hidden="true">▤</div><div><h2>Наш атлас</h2><p>Здесь появятся ваши наблюдения,<br>схемы и выводы.</p><button class="text-link" type="button" data-open="atlas">Посмотреть →</button></div></section>
+      </div>
+      <footer><ol><li><span>1</span> Предположите</li><li><span>2</span> Проверьте</li><li><span>3</span> Обсудите</li><li><span>4</span> Сохраните</li></ol><p class="prototype-label">Прототип · доступна первая миссия</p></footer>
+    </main>
+  </div>
+
+  <dialog id="panel" aria-labelledby="panel-title"><div class="dialog-header"><p class="eyebrow" id="panel-label">Экспедиция</p><button type="button" id="close-panel" class="close-button" aria-label="Закрыть окно">×</button></div><div id="panel-body"></div></dialog>
+  <p class="toast" id="toast" role="status" hidden></p>
+</body>
+</html>
