@@ -1,0 +1,10 @@
+{
+  "package": "three",
+  "version": "0.164.1",
+  "source": "https://registry.npmjs.org/three/-/three-0.164.1.tgz",
+  "integrity": "sha512-iC/hUBbl1vzFny7f5GtqzVXYjMJKaTPxiCxXfrvVdBi1Sf+jhd1CAkitiFwC7mIBFCo3MrDLJG97yisoaWig0w==",
+  "files": [
+    "build/three.module.min.js",
+    "LICENSE"
+  ]
+}
