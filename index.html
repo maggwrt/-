@@ -7,16 +7,17 @@
   <meta name="description" content="Исследовательская экспедиция с роботом ЛУМОЙ: шифры, настоящая 3D-лаборатория и командные открытия. Физика и информатика, 6 класс.">
   <title>Зов Земли — исследуем вместе с ЛУМОЙ</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%233654d7'/%3E%3Ccircle cx='20' cy='20' r='8' fill='%23e9f1bd'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=expedition-2">
-  <script type="module" src="app.js?v=expedition-2"></script>
+  <link rel="stylesheet" href="styles.css?v=story-1">
+  <link rel="stylesheet" href="lore.css?v=story-1">
+  <script type="module" src="app.js?v=story-1"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">К содержанию</a>
   <div class="shell">
     <header class="header">
       <a class="brand" href="#home" data-action="home"><span class="signal-logo" aria-hidden="true">((●))</span> Зов Земли</a>
-      <nav aria-label="Основная навигация"><a href="#route" data-action="route">Экспедиция</a><button type="button" data-open="atlas">Атлас</button><button type="button" data-open="team">Команда</button></nav>
-      <button type="button" class="teacher button-outline" data-open="teacher">Для учителя →</button>
+      <nav aria-label="Основная навигация"><a href="#route" data-action="route">Экспедиция</a><button type="button" data-open="atlas">Атлас</button><button type="button" data-open="team">Команда</button><button type="button" data-lore-action="diary">Дневник ЛУМЫ</button></nav>
+      <div class="header-tools"><button type="button" class="button-outline sound-toggle" data-lore-action="sound" aria-pressed="false">Звук: выкл.</button><button type="button" class="teacher button-outline" data-open="teacher">Для учителя →</button></div>
     </header>
     <main id="main">
       <div id="home-view">
@@ -24,9 +25,9 @@
           <div class="hero-copy">
             <p class="eyebrow">Физика + информатика · 6 класс</p>
             <h1 id="hero-title">Наблюдать. Проверять.<br>Открывать вместе.</h1>
-            <p class="intro">Пять потерянных сигналов. Один любопытный робот.<br class="desktop-break"> И ваша команда, которая умеет задавать вопросы.</p>
+            <p class="intro">ЛУМА вернулся из незаконченной экспедиции.<br class="desktop-break"> Помогите ему восстановить связь и закончить Атлас Земли.</p>
             <button class="button-primary" type="button" data-action="open-mission"><span id="hero-cta">Начать экспедицию</span> <span aria-hidden="true">→</span></button>
-            <div class="hero-tags"><span>Первая станция уже открыта</span><span>3D-опыты и ваши открытия</span></div>
+            <div class="hero-tags"><span>Исследовательская сеть · пять станций</span><span>3D-опыты и ваши открытия</span></div>
           </div>
           <figure class="hero-art scene-hero" id="hero-interactive">
             <div class="hero-ornament ornament-one" aria-hidden="true"></div><div class="hero-ornament ornament-two" aria-hidden="true"></div>
@@ -36,6 +37,7 @@
             <span class="scene-hint" id="hero-hint">Знакомьтесь с ЛУМОЙ</span>
           </figure>
         </section>
+      <section class="expedition-story-strip" aria-label="История экспедиции"><div><p class="eyebrow">Полевой терминал · экспедиция «Зов Земли»</p><p id="home-story-status">Карта сохранилась. Записи требуют проверки. ЛУМА ждёт вашу команду.</p></div><button type="button" class="text-link" data-lore-action="intro">Как всё началось →</button></section>
       <section class="route" id="route" aria-labelledby="route-title">
         <div class="section-heading"><h2 id="route-title">Маршрут экспедиции</h2><p id="progress">Восстановлено 0 из 5 сигналов</p></div>
         <ol class="stations">
@@ -52,7 +54,7 @@
           <section class="mission-card" aria-labelledby="mission-title"><div><p class="eyebrow">Миссия 01 · Туманное поле</p><h2 id="mission-title">Сообщение сквозь туман</h2><p>Расшифруйте сигнал, испытайте тележки в 3D<br>и помогите ЛУМЕ доставить маяк.</p><div class="steps"><span><b>1</b> Сигнал</span><span aria-hidden="true">→</span><span><b>2</b> Опыт</span><span aria-hidden="true">→</span><span><b>3</b> Открытие</span></div><button class="text-link" type="button" data-action="open-mission">Открыть первую миссию →</button></div><div class="cipher-art" aria-hidden="true"><div class="cipher-circle"><span>А Б В Г Д Е Ж З И</span><strong>−3</strong><span>П Г У Ы У Ц Х</span></div><p>Сначала — вопрос.<br>Потом — проверка.</p></div></section>
           <section class="atlas-card"><div class="book-icon" aria-hidden="true">▤</div><div><h2>Наш атлас</h2><p>Здесь живут ваши опыты,<br>идеи и объяснения.</p><button class="text-link" type="button" data-open="atlas">Открыть записи →</button></div></section>
         </div>
-        <footer><ol><li><span>1</span> Предположите</li><li><span>2</span> Проверьте</li><li><span>3</span> Обсудите</li><li><span>4</span> Сохраните</li></ol><p class="prototype-label">Учебная экспедиция · первый этап · версия с 3D-лабораторией</p></footer>
+        <footer><ol><li><span>1</span> Предположите</li><li><span>2</span> Проверьте</li><li><span>3</span> Обсудите</li><li><span>4</span> Сохраните</li></ol><p class="prototype-label">Учебная экспедиция · первый этап · история ЛУМЫ и 3D-лаборатория</p></footer>
       </div>
       <section id="mission-view" hidden aria-labelledby="mission-page-title">
         <div class="mission-topline"><button type="button" class="back-link" data-action="home">← К карте экспедиции</button><span class="mission-meta">Станция 01 / 05 · Работа в команде</span></div>
