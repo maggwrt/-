@@ -84,6 +84,39 @@ export function createExpeditionScene(container, options = {}) {
   function plant(x, z, scale = 1) {
     for (let i = 0; i < 3; i++) { const leaf = mesh(new THREE.ConeGeometry(.07 * scale, .52 * scale, 4), 0x90aa74); leaf.position.set(x + (i - 1) * .1, .41, z); leaf.rotation.z = (i - 1) * .43; }
   }
+  function organicTerrain(color, depth = .16) {
+    const shape = new THREE.Shape();
+    shape.moveTo(-3.75, -.48); shape.bezierCurveTo(-3.35, -2.05, -1.65, -2.55, -.2, -2.3);
+    shape.bezierCurveTo(1.45, -2.5, 3.65, -1.45, 3.88, -.12);
+    shape.bezierCurveTo(4.1, 1.1, 2.35, 2.35, .72, 2.48);
+    shape.bezierCurveTo(-1.02, 2.72, -3.45, 1.75, -3.75, .48);
+    shape.closePath();
+    const geometry = depth > 0 ? new THREE.ExtrudeGeometry(shape, {depth, bevelEnabled:true, bevelSegments:1, steps:1, bevelSize:.035, bevelThickness:.025}) : new THREE.ShapeGeometry(shape);
+    geometry.rotateX(Math.PI / 2); geometry.translate(0, depth * .5, 0);
+    const object = mesh(geometry, color, world, {side:THREE.DoubleSide, roughness:.9});
+    return object;
+  }
+  function fieldStation(x, z, scale = 1) {
+    const group = new THREE.Group(); group.position.set(x, .23, z); group.scale.setScalar(scale); world.add(group);
+    const desk = roundBox(1.38, .13, .68, 0x9c7652, group, .035); desk.position.y = 1.15;
+    const shelf = roundBox(.94, .08, .43, 0x6d8c73, group, .025); shelf.position.set(.04, .74, -.02);
+    [-.5, .5].forEach(x => { const leg = cylinder(.045,.055,.9, C.ink, group, 8); leg.position.set(x, .56, 0); });
+    const instrument = roundBox(.5, .22, .37, 0x738a84, group, .06); instrument.position.set(-.25, 1.31, .02);
+    const dial = cylinder(.12,.12,.025,C.mint,group,20); dial.rotation.x=Math.PI/2;dial.position.set(-.25,1.31,.21);
+    const notebook = roundBox(.33,.04,.41,C.terra,group,.018); notebook.position.set(.38,1.25,.06); notebook.rotation.y=-.18;
+    const canopy = new THREE.Group(); canopy.position.set(0, 1.82, -.12); group.add(canopy);
+    [-.63,.63].forEach(x => {const pole=cylinder(.025,.03,.85,C.ink,canopy,8);pole.position.set(x,-.42,0);});
+    const roof = roundBox(1.65,.08,.68,0xb58f60,canopy,.04); roof.rotation.z=-.08; roof.position.y=.04;
+    const flag = mesh(new THREE.PlaneGeometry(.38,.24),C.gold,group); flag.position.set(.82,1.95,.03);flag.rotation.y=Math.PI/2;
+    const flagPole = cylinder(.018,.02,.68,C.ink,group,8);flagPole.position.set(.82,1.64,.03);
+  }
+  function railFragment(x, z, scale = 1) {
+    const group = new THREE.Group(); group.position.set(x,.26,z); group.rotation.y=.22; group.scale.setScalar(scale); world.add(group);
+    [-.38,.38].forEach(offset=>{const rail=roundBox(2.65,.055,.045,.6*0x8d9a9b,group,.012);rail.position.z=offset;});
+    for(let i=-5;i<=5;i++){const sleeper=roundBox(.07,.04,.98,0x9b8161,group,.012);sleeper.position.x=i*.27;}
+    const marker=roundBox(.07,.86,.07,C.ink,group,.01);marker.position.set(1.44,.45,.42);
+    const cloth=mesh(new THREE.PlaneGeometry(.43,.27),C.gold,group);cloth.position.set(1.66,.72,.42);cloth.rotation.y=Math.PI/2;
+  }
   function robot(x, z, scale = 1) {
     const root = new THREE.Group(); root.position.set(x, .28, z); root.scale.setScalar(scale); world.add(root);
     const body = roundBox(1.25, 1.13, .82, C.cream, root, .19); body.position.y = 1.27;
@@ -139,12 +172,12 @@ export function createExpeditionScene(container, options = {}) {
     return { group, wheels };
   }
   // Small, deliberately restrained meadow diorama with readable measurement marks.
-  const island = cylinder(isField ? 1 : 4, isField ? .98 : 3.8, .42, 0xc6d0b7, world, 64);
+  const island = isField ? cylinder(1, .98, .42, 0xc6d0b7, world, 64) : organicTerrain(0x7f916a, .18);
   if (isField) island.scale.set(9.1, 1, 5.2);
-  island.position.y = -.05;
-  const lawn = cylinder(isField ? 1 : 4.01, isField ? 1 : 4.01, .08, C.pale, world, 64);
+  island.position.y = isField ? -.05 : .04;
+  const lawn = isField ? cylinder(1, 1, .08, C.pale, world, 64) : organicTerrain(0x99a878, .035);
   if (isField) lawn.scale.set(9.1, 1, 5.2);
-  lawn.position.y = .2;
+  lawn.position.y = isField ? .2 : .17;
   const luma = robot(isField ? -5.7 : -.25, isField ? 3.05 : .5, isField ? .72 : 1.12);
   luma.root.rotation.y = isField ? .35 : .17;
   let carts = [];
@@ -189,10 +222,16 @@ export function createExpeditionScene(container, options = {}) {
     [[-3.3,-2.8],[.8,3.4],[5.6,2.9],[7,-1.1],[-7.3,-1.3]].forEach(args=>plant(...args));
     makeBeaconDock(7.05, 0, 1.02);
   } else {
-    tree(-2.2,-1.7,.73); tree(-1.1,-2.1,.53); tree(2.4,-.9,.72); tree(2.8,.2,.48);
-    rock(-2.5,1.2,.4); rock(2.05,1.5,.35); plant(-1.8,2); plant(1.4,2.25); plant(-2.8,-.2);
-    const trail = roundBox(5.1,.045,.9,0xc6ceb9,world,.02); trail.position.set(.1,.26,-.4); trail.rotation.y=.4;
-    makeBeaconDock(1.82, 1.45, .64);
+    // HERO: a compact field station on an irregular olive terrain fragment. The
+    // cluster is intentionally sparse so the robot remains the focal point and
+    // parent illustrations can show through around the transparent canvas.
+    tree(-3.15,-1.28,.94); tree(-2.82,1.25,.72); tree(2.78,-1.1,.9); tree(3.18,1.14,.62); tree(1.45,2.05,.52);
+    rock(-2.55,1.52,.4); rock(2.3,1.46,.34); rock(-3.22,-.35,.28); rock(3.1,-.18,.3);
+    plant(-1.8,1.92,.9); plant(1.1,2.2,.85); plant(-3.16,.48,.72); plant(2.78,.48,.74); plant(-.95,-1.35,.78);
+    fieldStation(-2.48,.35,.82);
+    railFragment(.42,-1.33,.72);
+    const trail = roundBox(3.9,.045,.58,0xc4b68a,world,.02); trail.position.set(-.08,.24,-.15); trail.rotation.y=.35;
+    makeBeaconDock(2.12, 1.42, .64);
   }
   const payload = new THREE.Group(); payload.visible = false; world.add(payload);
   const payloadBase = cylinder(.22, .25, .12, C.cream, payload); payloadBase.position.y = .06;
@@ -203,7 +242,7 @@ export function createExpeditionScene(container, options = {}) {
   // Soft ground shadow below the floating island.
   const shadow = mesh(new THREE.PlaneGeometry(80,80),0xffffff,scene); shadow.material=new THREE.ShadowMaterial({opacity:.12}); shadow.receiveShadow=true; shadow.castShadow=false; shadow.rotation.x=-Math.PI/2; shadow.position.y=-.62;
   const pointer={x:0,y:0};
-  let azimuth=mode==='hero' ? .42 : .48, polar=mode==='hero' ? 1.17 : .92, radius=mode==='hero' ? 12.9 : 18.5;
+  let azimuth=mode==='hero' ? .42 : .48, polar=mode==='hero' ? 1.17 : .92, radius=mode==='hero' ? 11.6 : 18.5;
   let desiredAzimuth=azimuth, desiredPolar=polar, desiredRadius=radius;
   let disposed=false, contextLost=false, inView=true, running=false, userPaused=false, raf=0, last=0, ambientTime=0, elapsed=0;
   let experiment={speedA:3,speedB:2,distance:12};
@@ -223,7 +262,7 @@ export function createExpeditionScene(container, options = {}) {
     const width=Math.max(1,container.clientWidth),height=Math.max(1,container.clientHeight);
     renderer.setSize(width,height,false); camera.aspect=width/height; camera.updateProjectionMatrix();
     // Keep the entire teaching model in frame on a narrow device.
-    desiredRadius=mode==='hero' ? 12.9*Math.max(1,1.28/camera.aspect) : 18.5*Math.max(1,1.7/camera.aspect);
+    desiredRadius=mode==='hero' ? 11.6*Math.max(1,1.28/camera.aspect) : 18.5*Math.max(1,1.7/camera.aspect);
     if(!last)radius=desiredRadius;
     renderOnce();
   }

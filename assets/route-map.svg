@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 270" preserveAspectRatio="none" role="img" aria-label="Схематичная карта маршрута пяти исследовательских станций">
+  <defs>
+    <linearGradient id="mapbg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#e4ece2"/>
+      <stop offset="1" stop-color="#d2e0d2"/>
+    </linearGradient>
+    <pattern id="maplines" patternUnits="userSpaceOnUse" width="72" height="40">
+      <path d="M-8 28c18-13 33-13 48-3s25 10 40 0" fill="none" stroke="#6b917e" stroke-opacity=".18" stroke-width="2"/>
+    </pattern>
+    <g id="tree"><path d="M0 0v20" stroke="#537767" stroke-width="2"/><path d="M0 3-8 14h16zm0 7-11 15h22z" fill="#638a73"/></g>
+  </defs>
+  <rect width="1200" height="270" rx="14" fill="url(#mapbg)"/>
+  <path d="M0 212c135-51 239-37 344 2 119 44 213 46 329 1 138-53 235-34 352 9 72 26 119 23 175 9v37H0z" fill="#b4caa9" opacity=".72"/>
+  <path d="M0 226c125-45 230-35 335 4 112 43 223 47 337 4 139-52 234-35 353 8 75 27 120 24 175 10" fill="none" stroke="#85a47f" stroke-width="4" opacity=".7"/>
+  <path d="M0 124c142-37 229-6 316 13 104 23 193 18 284-36 98-59 185-56 283-13 111 49 186 46 317 5v88c-85 26-145 15-222-10-112-37-198-51-318-4-126 49-229 34-340-4-107-37-195-41-320-4z" fill="#d8e3d3" opacity=".9"/>
+  <path d="M-18 169c149-48 238-28 352 3 110 30 188 27 298-36 83-47 169-52 266-14 116 45 193 61 326 14" fill="none" stroke="#79a7a0" stroke-width="13" opacity=".72"/>
+  <path d="M-18 169c149-48 238-28 352 3 110 30 188 27 298-36 83-47 169-52 266-14 116 45 193 61 326 14" fill="none" stroke="#cbe2d6" stroke-width="6" opacity=".94"/>
+  <path d="M0 0h1200v270H0z" fill="url(#maplines)" opacity=".42"/>
+  <!-- low detail landmark silhouettes, leaving labels to the interface -->
+  <g fill="#9db6a3" opacity=".95">
+    <path d="M60 108 115 48l29 30 44-58 74 88H60z"/>
+    <path d="M476 101 520 52l27 31 39-64 68 84H476z"/>
+    <path d="M905 101 956 42l32 36 39-51 71 74H905z"/>
+  </g>
+  <g fill="#f4efe0" opacity=".85">
+    <path d="M100 108 145 58l20 25 42-51 49 76H100z"/>
+    <path d="M521 101 550 68l26 29 34-53 43 57H521z"/>
+    <path d="M949 101 978 64l22 29 28-41 55 49H949z"/>
+  </g>
+  <g opacity=".82">
+    <use href="#tree" transform="translate(232 108) scale(1.7)"/><use href="#tree" transform="translate(276 122) scale(1.15)"/><use href="#tree" transform="translate(385 121) scale(1.5)"/><use href="#tree" transform="translate(430 101) scale(1.05)"/>
+    <use href="#tree" transform="translate(758 116) scale(1.55)"/><use href="#tree" transform="translate(817 107) scale(1.1)"/><use href="#tree" transform="translate(1138 117) scale(1.4)"/>
+  </g>
+  <path d="M78 185c106-45 177-26 275 2 98 29 188 29 283-26 92-52 170-56 265-18 119 48 187 57 269 20" fill="none" stroke="#1c5848" stroke-width="3" stroke-dasharray="6 11" opacity=".72"/>
+  <g fill="#f2b44a" stroke="#183c34" stroke-width="2">
+    <circle cx="86" cy="183" r="8"/><circle cx="341" cy="203" r="8"/><circle cx="618" cy="145" r="8"/><circle cx="865" cy="160" r="8"/><circle cx="1138" cy="167" r="8"/>
+  </g>
+  <g fill="none" stroke="#f2b44a" stroke-width="2" opacity=".55">
+    <circle cx="86" cy="183" r="17"/><circle cx="1138" cy="167" r="17"/>
+  </g>
+</svg>

@@ -74,13 +74,20 @@ function loadSceneModule() {
 function signalRestored() { return Boolean(m.record && !state.story.deliveryPending); }
 function updateProgress() {
   const restored = signalRestored();
-  $('#progress').textContent = `Восстановлено ${restored ? 1 : 0} из 5 сигналов`;
+  const progress = $('#progress');
+  if (progress) progress.textContent = `Восстановлено ${restored ? 1 : 0} из 5 сигналов`;
+  const statusProgress = $('#home-status-progress');
+  if (statusProgress) statusProgress.textContent = `${restored ? 1 : 0} / 5`;
   $('#first-status').textContent = restored ? 'Сигнал восстановлен' : state.story.deliveryPending ? 'Маяк готов к отправке' : 'Можно начать';
   $('.station.active').classList.toggle('is-restored', restored);
   $('#home-story-status').textContent = restored ? 'Туманное поле снова на связи. В дневнике ЛУМЫ появилась первая восстановленная запись.' : state.story.deliveryPending ? 'Протокол готов. Осталось доставить маяк и включить станцию.' : 'Карта сохранилась. Записи требуют проверки. ЛУМА ждёт вашу команду.';
   heroScene?.setStoryState({signalRestored: restored, awakened: Boolean(state.story.introSeen || m.unlocked || m.record)});
   lore?.sync();
   $('#hero-cta').textContent = m.record ? 'Вернуться к первой миссии' : m.unlocked ? 'Продолжить экспедицию' : 'Начать экспедицию';
+  const dashboardNote = $('#current-stage-note');
+  const dashboardCta = $('#dashboard-cta');
+  if (dashboardNote) dashboardNote.textContent = restored ? 'Станция на связи' : state.story.deliveryPending ? 'Осталось отправить маяк' : m.unlocked ? 'Продолжить черновик' : 'Можно начать';
+  if (dashboardCta) dashboardCta.textContent = restored ? 'Посмотреть результат' : m.unlocked ? 'Продолжить миссию' : 'Начать миссию';
 }
 function home(scrollToRoute = false) {
   cleanupDelivery(); cleanupLab(); $('#mission-view').hidden = true; $('#home-view').hidden = false;
@@ -408,6 +415,14 @@ async function initHero(){
 }
 const screens={atlas,team,teacher};
 document.addEventListener('click',event=>{
+  const menu = event.target.closest('[data-menu-toggle]');
+  if (menu) {
+    const header = $('#site-header');
+    const open = header.classList.toggle('is-menu-open');
+    header.dataset.menuOpen = String(open);
+    menu.setAttribute('aria-expanded', String(open));
+    return;
+  }
   const open=event.target.closest('[data-open]');if(open){screens[open.dataset.open]?.();return;}
   const action=event.target.closest('[data-action]');if(action){event.preventDefault();if(action.dataset.action==='edit-record'){if(panel.open)panel.close();editingRecord=true;m.step=4;openMission();}else if(action.dataset.action==='replay-delivery'||action.dataset.action==='resume-delivery'){if(panel.open)panel.close();m.step=4;openMission();renderDelivery({autoStart:true});}else if(action.dataset.action==='open-mission')requestMission();else if(action.dataset.action==='route')home(true);else home();return;}
   const step=event.target.closest('[data-step]');if(step&&!step.disabled){goStep(Number(step.dataset.step));return;}

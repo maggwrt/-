@@ -194,3 +194,70 @@
   .lore-intro-copy p { font-size: 13px; }
   .lore-diary-detail p { font-size: 13px; }
 }
+
+/* Lore dialogs share the field-guide paper, with a quiet yellow notebook rail. */
+.lore-dialog {
+  --lore-ink: #183c34;
+  --lore-muted: #5d7066;
+  --lore-blue: #1c5848;
+  --lore-line: #d7d4c8;
+  color: var(--lore-ink);
+  background: #faf8f1;
+  border-color: #cbc9bb;
+  box-shadow: 0 28px 100px #173b3129;
+}
+.lore-dialog::backdrop { background: #173b3188; }
+.lore-eyebrow { color: #6e7965; font-size: 11px; }
+.lore-close { min-width: 44px; min-height: 44px; width: 44px; height: 44px; border-color: #c7cbbf; background: #f1eee4; color: var(--lore-ink); }
+.lore-close:hover { background: #e7e3d7; }
+.lore-intro-copy h2, .lore-diary-title { color: var(--lore-ink); }
+.lore-intro-copy p, .lore-intro-copy p.lore-small { color: #465c53; font-size: 15px; }
+.lore-intro-copy .lore-voice { color: #315947; }
+.lore-terminal { background: #1c3f36; border-color: #285b4c; }
+.lore-terminal-line { color: #63796f !important; }
+.lore-field { color: #40594c; font-size: 15px; }
+.lore-field input { border-color: #b9c4b6; background: #fffef9; color: var(--lore-ink); }
+.lore-primary { background: #1c5848; border-color: #1c5848; color: #fffaf0; min-height: 46px; }
+.lore-primary:hover { background: #123f35; border-color: #123f35; }
+.lore-secondary { color: var(--lore-ink); background: #faf8f1; border-color: #acb7a9; min-height: 46px; }
+.lore-secondary:hover { background: #fffdf7; border-color: #1c5848; }
+.lore-text-button { min-height: 44px; color: #45685a; font-size: 13px !important; text-decoration: underline; text-underline-offset: 4px; }
+.lore-station-dots span { color: #718077; background: #f0eee6; border-color: #bec8bd; }
+.lore-station-dots .is-first { color: #1c5848; background: #e7eddf; border-color: #98b39d; }
+.lore-progress span.is-current { background: #1c5848; }
+.lore-progress span.is-done { background: #a7b989; }
+.lore-registration { color: #365f46 !important; background: #e9f0dd; border-color: #c9d9b7; }
+.lore-plan { color: #5c7064; }
+.lore-diary { background: #fbf8ed; }
+.lore-diary-title { color: #183c34; }
+.lore-diary-intro { color: #53675c; font-size: 15px; }
+.lore-diary-layout { grid-template-columns: 280px minmax(0, 1fr); }
+.lore-entry-list { border-left: 3px solid #e6d18d; padding-left: 12px; }
+.lore-entry-button { min-height: 68px; border-color: #d7d8cd; background: #f6f4eb; color: #596b61; }
+.lore-entry-button.is-selected { border-color: #a5bba1; color: #183c34; background: #e9f0df; box-shadow: inset 3px 0 0 #1c5848; }
+.lore-entry-button:not(:disabled):hover { border-color: #91a98e; background: #edf3e5; }
+.lore-entry-button:disabled { opacity: 1; color: #7a8279; }
+.lore-entry-button small { font-size: 11px; color: #7d867b; }
+.lore-diary-detail { background: #f4f0d9; border-color: #e0d4a5; }
+.lore-diary-detail .lore-eyebrow { color: #796f45; }
+.lore-diary-detail h3 { color: #315b44; font-size: 25px; }
+.lore-diary-detail p { color: #465c53; font-size: 15px; }
+.lore-diary-detail p.lore-voice { color: #315947; font-size: 18px; }
+.lore-diary-detail p.lore-signature { color: #7c795b; }
+.lore-log h3 { color: #466250; font-size: 15px; }
+.lore-log strong { color: #4e6959; font-size: 13px; }
+.lore-log p { color: #64766b; font-size: 12px; }
+.lore-diary-footer p { color: #6e786c; font-size: 12px; }
+@media (max-width: 700px) {
+  .lore-dialog { width: calc(100% - 22px); padding: 20px; }
+  .lore-intro-copy p { font-size: 14px; }
+  .lore-diary-layout { grid-template-columns: 225px minmax(0, 1fr); }
+}
+@media (max-width: 540px) {
+  .lore-dialog { width: calc(100% - 14px); padding: 17px; }
+  .lore-intro-copy p { font-size: 14px; }
+  .lore-diary-layout { grid-template-columns: 1fr; }
+  .lore-entry-list { border-left: 0; border-top: 3px solid #e6d18d; padding: 10px 0 0; }
+  .lore-diary-detail p { font-size: 14px; }
+  .lore-diary-detail p.lore-voice { font-size: 17px; }
+}

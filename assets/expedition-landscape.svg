@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Пейзаж исследовательской экспедиции: хвойный край, горы, туман и сигнальный маяк">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#cddbd5"/>
+      <stop offset="1" stop-color="#eef0df"/>
+    </linearGradient>
+    <linearGradient id="pine" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#123a35"/>
+      <stop offset="1" stop-color="#255548"/>
+    </linearGradient>
+    <linearGradient id="mist" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#dce5d5" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#f3efde" stop-opacity=".82"/>
+    </linearGradient>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+    <pattern id="contours" patternUnits="userSpaceOnUse" width="90" height="52" patternTransform="rotate(-8)">
+      <path d="M-8 18C13 3 39 2 56 14s29 13 48 2M-8 40c23-12 43-11 61 1s31 11 47 1" fill="none" stroke="#85a194" stroke-opacity=".18" stroke-width="2"/>
+    </pattern>
+    <g id="smallPine">
+      <path d="M0 0v60" stroke="#5b6e5c" stroke-width="5" stroke-linecap="round"/>
+      <path d="M0 10-27 42h54zm0 15-34 42h68zm0 22-40 45h80z" fill="#527b68"/>
+      <path d="M0 16-16 36h32M0 30-22 57h44M0 49-28 81h56" fill="none" stroke="#7ea087" stroke-opacity=".6" stroke-width="3"/>
+    </g>
+    <g id="flag">
+      <path d="M0 0v84" stroke="#1b423b" stroke-width="4"/>
+      <path d="M2 4h48L28 25l22 19H2z" fill="#f2b44a"/>
+    </g>
+  </defs>
+
+  <rect width="1600" height="620" fill="url(#sky)"/>
+  <path d="M0 262C150 215 278 236 407 253c147 18 277-5 402-55 154-62 292-35 412 15 138 57 262 55 379 5v402H0z" fill="#b6cbbd" opacity=".6"/>
+  <path d="M525 294 703 121l104 92 122-162 196 243 112-139 188 154v279H525z" fill="#789888" opacity=".62"/>
+  <path d="M602 272 704 144l45 76 78-107 91 147 91-102 84 125 98-119 137 163-100 104H602z" fill="#edf0df" opacity=".82"/>
+  <path d="M690 271 777 195l44 54 81-108 88 147 97-94 64 90 89-91 114 128 112-108 107 157v176H690z" fill="#6e8d7e" opacity=".55"/>
+  <path d="M0 465c181-87 333-62 476-5 131 53 259 74 392 37 173-48 291-52 416 7 125 59 221 72 316 25v91H0z" fill="#9eb89a"/>
+  <path d="M0 528c171-41 285-26 424 21 126 43 274 40 400-3 128-44 252-54 397-1 154 56 242 45 379 15v60H0z" fill="#e2dfc6"/>
+  <path d="M0 472c173-62 304-32 446 22 119 45 249 67 385 21 168-56 286-48 412 12 151 70 243 64 357 25" fill="none" stroke="#527762" stroke-opacity=".65" stroke-width="5"/>
+  <path d="M0 492c173-62 304-32 446 22 119 45 249 67 385 21 168-56 286-48 412 12 151 70 243 64 357 25" fill="none" stroke="#d9c984" stroke-opacity=".72" stroke-width="2"/>
+  <path d="M650 620c89-58 147-87 231-98 83-11 158-2 241 24 68 21 131 29 218 9l-13 65z" fill="url(#contours)"/>
+
+  <!-- quiet signal paths behind the character -->
+  <path d="M835 427c84-118 182-149 290-116 73 22 143 24 246-42" fill="none" stroke="#f2b44a" stroke-width="3" stroke-dasharray="4 15" opacity=".65"/>
+  <path d="M835 427c84-118 182-149 290-116 73 22 143 24 246-42" fill="none" stroke="#fff4c6" stroke-width="1" stroke-dasharray="1 18" opacity=".88"/>
+  <g opacity=".75">
+    <circle cx="841" cy="422" r="7" fill="#f2b44a"/><circle cx="841" cy="422" r="15" fill="none" stroke="#f2b44a" stroke-opacity=".55" stroke-width="2"/>
+    <circle cx="1328" cy="269" r="5" fill="#f2b44a"/><circle cx="1328" cy="269" r="14" fill="none" stroke="#f2b44a" stroke-opacity=".45" stroke-width="2"/>
+  </g>
+
+  <!-- dark pine expedition edge, carrying the hero text -->
+  <path d="M0 0h500c-39 70-77 106-103 159-24 49-23 97-66 134-48 41-88 62-110 112-20 45-8 111-84 138-44 16-88 20-137 27z" fill="url(#pine)"/>
+  <path d="M0 0h500c-39 70-77 106-103 159-24 49-23 97-66 134-48 41-88 62-110 112-20 45-8 111-84 138-44 16-88 20-137 27z" fill="url(#contours)" opacity=".42"/>
+  <path d="M448 0c33 60 51 116 38 173-17 74-66 105-60 180 5 55 47 98 36 157" fill="none" stroke="#87a98d" stroke-opacity=".28" stroke-width="4"/>
+  <g opacity=".85">
+    <use href="#smallPine" transform="translate(72 246) scale(.75)"/>
+    <use href="#smallPine" transform="translate(170 197) scale(1.05)"/>
+    <use href="#smallPine" transform="translate(308 293) scale(.68)"/>
+    <use href="#smallPine" transform="translate(390 138) scale(.54)"/>
+  </g>
+
+  <!-- distant field station, deliberately kept in the open space around the 3D Luma -->
+  <g transform="translate(1330 359)">
+    <path d="M0 0v93" stroke="#24463c" stroke-width="5"/>
+    <path d="M4 5h65L42 31l27 23H4z" fill="#f2b44a"/>
+    <circle cx="1" cy="-5" r="10" fill="#fff4bf" stroke="#d89c38" stroke-width="3"/>
+    <circle cx="1" cy="-5" r="23" fill="none" stroke="#f2b44a" stroke-opacity=".5" stroke-width="2"/>
+    <path d="M-38 94h80" stroke="#567d69" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g opacity=".6">
+    <use href="#smallPine" transform="translate(1450 335) scale(.7)"/>
+    <use href="#smallPine" transform="translate(1514 376) scale(.48)"/>
+    <use href="#smallPine" transform="translate(119 437) scale(.64)"/>
+  </g>
+  <path d="M1050 489q92-32 176-13 84 20 144 2" fill="none" stroke="#bc8b50" stroke-width="8" stroke-linecap="round" opacity=".75"/>
+  <path d="M1050 489q92-32 176-13 84 20 144 2" fill="none" stroke="#f2d693" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+  <g transform="translate(1023 380) scale(.52)"><use href="#flag"/></g>
+
+  <!-- warm atmospheric wash, leaves the central-right hero area readable -->
+  <path d="M360 98c202 28 330 81 476 68 173-16 276-91 438-47 135 36 206 108 326 102v207c-116 46-224 26-349-15-151-50-247-15-390 28-180 54-341 4-488-38-87-25-130-25-207-9V98z" fill="url(#mist)" filter="url(#soft)"/>
+  <path d="M450 114c181 38 299 69 427 57 181-17 281-85 427-43 148 42 208 104 296 91" fill="none" stroke="#ffffff" stroke-opacity=".38" stroke-width="16"/>
+</svg>
