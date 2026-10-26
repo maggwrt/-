@@ -1027,3 +1027,59 @@ footer li span { border-color: #abb6ab; }
   .hero-bottom-strip { min-height: 76px; padding: 11px 9px 8px; }
   .scene-hint { bottom: 84px; max-width: 220px; font-size: 10px; }
 }
+
+/* Expedition facts: a deliberate editorial status card with a clearer type
+   hierarchy than the surrounding illustration. */
+.hero-bottom-strip {
+  min-height: 82px;
+  padding: 14px 24px;
+  align-items: center;
+  background: linear-gradient(105deg, #12382ff2, #173d34df 62%, #173d34b8);
+  border: 1px solid #fffaf04d;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+}
+.hero-stat {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  justify-content: start;
+  column-gap: 12px;
+  min-height: 46px;
+  padding-inline: 22px;
+  text-align: left;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 11px;
+  line-height: 1.15;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #eef4e9;
+}
+.hero-stat b {
+  margin: 0;
+  color: #f7d485;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+.hero-stat span { white-space: nowrap; }
+.hero-stat strong {
+  display: block;
+  margin-top: 4px;
+  color: #fffaf0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.hero-stat + .hero-stat { border-left: 1px solid #fffaf052; }
+.hero-signal-line { align-self: center; margin-left: auto; padding-left: 16px; }
+@media (max-width: 650px) {
+  .hero-bottom-strip { min-height: 78px; padding: 10px 7px; }
+  .hero-stat { display: block; min-height: 0; padding-inline: 7px; text-align: center; font-size: 8px; letter-spacing: .02em; }
+  .hero-stat b { display: block; margin-bottom: 4px; font-size: 23px; }
+  .hero-stat strong { margin-top: 3px; font-size: 11px; }
+}
