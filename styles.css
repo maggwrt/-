@@ -533,6 +533,34 @@ dialog::backdrop { background: #202a4660; backdrop-filter: blur(4px); }
   .hero-ornament { transform: none !important; }
   .signal-complete::before, .signal-complete::after { animation: none !important; }
 }
+
+/* Hero spacing and contrast: reserve a real bottom band instead of letting
+   status text share the CTA row. */
+.hero-copy { padding-bottom: 92px; }
+.hero-tags { gap: 10px; margin-top: 18px; }
+.hero-tag { display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 7px 10px; border: 1px solid #fffaf05e; border-radius: 7px; background: #12382fba; color: #fffaf0; font-size: 12px; line-height: 1.25; }
+.hero-tag b { color: #f5c96c; font: 700 11px/1 ui-monospace, monospace; }
+.hero-bottom-strip { bottom: 0; min-height: 86px; padding: 17px 38px 14px; background: linear-gradient(180deg, #12382f10, #12382fc9 38%, #12382fe8); }
+.scene-hint { bottom: 104px; color: #fffaf0; font-size: 12px; text-shadow: 0 1px 4px #12382fee; }
+.hero-signal-line { align-self: end; display: flex; justify-content: flex-end; gap: 6px; padding-left: 10px; }
+.hero-signal-line i { display: block; width: 6px; height: 6px; border: 1px solid #f5c96c; border-radius: 50%; opacity: .85; }
+.hero-signal-line i:first-child { background: #f5c96c; }
+@media (max-width: 800px) {
+  .hero-copy { padding-bottom: 80px; }
+  .hero-bottom-strip { min-height: 82px; padding: 14px 18px 12px; }
+  .scene-hint { bottom: 95px; }
+  .hero-tag { font-size: 11px; }
+}
+@media (max-width: 650px) {
+  .hero-copy { padding-bottom: 72px; }
+  .hero-bottom-strip { left: 0; right: 0; min-height: 78px; padding: 13px 12px 10px; }
+  .hero-stat { font-size: 10px; }
+  .hero-stat strong { font-size: 14px; }
+  .scene-hint { bottom: 88px; font-size: 10px; }
+  .hero-tags { justify-content: flex-start; }
+  .hero-tag { min-height: 32px; font-size: 10px; padding: 6px 7px; }
+  .hero-signal-line { display: none; }
+}
 html[data-motion="off"] .hero-ornament { transform: none !important; transition: none; }
 /* Small integrations shared by the home and mission shells. */
 #hero-cta { font: inherit; line-height: inherit; }
@@ -922,3 +950,80 @@ footer li span { border-color: #abb6ab; }
 .route-landscape { opacity: 1; background: none; }
 .route-map-art { opacity: .25; background: url('assets/route-map.svg') center/cover no-repeat; }
 @media (max-width: 650px) { .route-map-art { opacity: .12; } }
+
+/* Final hero layout correction: reserve a real row for stats instead of overlaying them on the copy and scene. */
+.hero {
+  min-height: 690px;
+  padding: 48px 50px 22px;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+.hero-copy { min-width: 0; align-self: center; padding-bottom: 28px; }
+.hero-art, .scene-hero { min-height: 420px; align-self: center; }
+.hero-tags { width: fit-content; max-width: 100%; padding: 8px 11px; border: 1px solid #ffffff30; border-radius: 9px; background: #123b335c; }
+.hero-bottom-strip {
+  position: relative;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px 18px 11px;
+  border: 1px solid #fffaf038;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #173d34b8, #173d34e6);
+}
+.scene-hint { bottom: 13px; padding: 4px 8px; border-radius: 5px; background: #173d348c; }
+@media (max-width: 800px) {
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "copy" "art" "stats";
+    min-height: 0;
+    padding: 30px 27px 18px;
+    gap: 18px;
+  }
+  .hero-copy { grid-area: copy; padding-bottom: 0; }
+  .hero-art, .scene-hero { grid-area: art; min-height: 340px; }
+  .hero-bottom-strip { grid-area: stats; margin-top: 0; }
+}
+@media (max-width: 650px) {
+  .hero { padding: 27px 20px 15px; gap: 14px; }
+  .hero h1 { font-size: clamp(33px, 9.8vw, 47px); line-height: 1.02; }
+  .hero .intro { font-size: 16px; }
+  .hero-art, .scene-hero { min-height: 300px; }
+  .hero-tags { width: 100%; justify-content: center; font-size: 10px; }
+  .hero-bottom-strip { left: auto; right: auto; padding: 11px 8px 9px; }
+  .hero-stat { font-size: 9px; }
+  .hero-stat strong { font-size: 13px; }
+  .scene-hint { font-size: 9px; }
+}
+
+/* Hero layout guard: reserve a dedicated band for the expedition facts so it never covers copy or the scene hint. */
+@media (min-width: 801px) {
+  .hero-copy { padding-bottom: 86px; }
+}
+.hero-bottom-strip {
+  left: 28px; right: 28px; bottom: 14px;
+  min-height: 64px; padding: 14px 16px 10px;
+  border-top: 1px solid #fffaf06b; border-radius: 10px;
+  background: linear-gradient(90deg, #173d34e8 0%, #173d34c7 52%, #173d348c 100%);
+  box-shadow: 0 5px 18px #173d3430;
+}
+.hero-stat { color: #fffaf0; }
+.hero-stat strong { color: #f7d485; }
+.scene-hint {
+  left: auto; right: 18px; bottom: 84px; width: fit-content; max-width: 260px;
+  padding: 6px 10px; border-radius: 16px; background: #173d34b5;
+  color: #fffaf0; text-shadow: none;
+}
+@media (max-width: 800px) {
+  .hero-copy { padding-bottom: 0; }
+  .hero-bottom-strip { left: 18px; right: 18px; bottom: 14px; }
+  .scene-hint { right: 18px; bottom: 84px; }
+}
+@media (max-width: 650px) {
+  .hero-bottom-strip { min-height: 76px; padding: 11px 9px 8px; }
+  .scene-hint { bottom: 84px; max-width: 220px; font-size: 10px; }
+}
