@@ -1083,3 +1083,110 @@ footer li span { border-color: #abb6ab; }
   .hero-stat b { display: block; margin-bottom: 4px; font-size: 23px; }
   .hero-stat strong { margin-top: 3px; font-size: 11px; }
 }
+
+/* Focus pass: keep the full expedition content, but reveal secondary detail only when it is needed. */
+body { font-size: 16px; }
+.header { min-height: 68px; }
+.header nav { gap: 22px; }
+.hero {
+  min-height: 610px;
+  margin: 18px 0 20px;
+  padding: 42px 44px 20px;
+  gap: 18px;
+}
+.hero-copy { max-width: 570px; padding-bottom: 34px; }
+.hero h1 { max-width: 560px; font-size: clamp(41px, 4.35vw, 63px); letter-spacing: -2.6px; }
+.hero .intro { max-width: 490px; margin-bottom: 20px; font-size: clamp(16px, 1.25vw, 18px); }
+.hero-tags { width: auto; max-width: 100%; margin-top: 18px; padding: 0; border: 0; border-radius: 0; background: transparent; gap: 0; font-size: 11px; color: #f8f2e6; }
+.hero-tag { min-height: 0; padding: 0; border: 0; border-radius: 0; background: transparent; gap: 0; font-weight: 650; white-space: nowrap; }
+.hero-tag + .hero-tag { padding-left: 13px; margin-left: 13px; border-left: 1px solid #ffffff66; }
+.hero-art, .scene-hero { min-height: 370px; }
+.hero-bottom-strip { min-height: 74px; margin-top: 0; padding: 11px 18px; border-radius: 12px; }
+.hero-stat { padding-inline: 16px; }
+.expedition-story-strip { min-height: 0; margin: 0 0 16px; padding: 12px 15px; border: 1px solid #d4d6ca; border-left: 3px solid var(--amber); border-radius: 12px; background: #fbfaf5; }
+.expedition-story-strip p:not(.eyebrow) { font-size: 14px; line-height: 1.45; }
+.expedition-story-strip .eyebrow { margin-bottom: 3px; }
+.home-dashboard { margin: 16px 0; gap: 13px; }
+.current-mission-panel, .expedition-status-panel, .resource-card { padding: 21px; border-radius: 15px; }
+.current-mission-panel > p, .expedition-status-panel > p { font-size: 15px; line-height: 1.5; }
+.mission-todo-list { margin: 15px 0; gap: 7px; }
+.mission-todo-list li b { font-size: 11px; }
+.mission-todo-list li small { font-size: 10px; }
+.current-mission-footer { padding-top: 14px; }
+.expedition-status-panel .text-link { margin-top: 12px; }
+.network-display { margin: 17px 0 12px; }
+.route { padding: 23px 24px 19px; }
+.route-landscape { min-height: 175px; }
+.route .stations { margin-top: 15px; }
+.home-resources { margin: 17px 0; gap: 11px; }
+.resource-card { gap: 12px; }
+.resource-card .resource-icon { width: 37px; height: 37px; font-size: 18px; }
+.resource-card h3 { font-size: 17px; margin-bottom: 4px; }
+.resource-card p { font-size: 13px; margin-bottom: 7px; }
+footer { margin: 18px 0 14px; padding-top: 11px; }
+
+/* Mission: one clear action, with optional notes and roles out of the way. */
+.mission-layout { gap: 14px; }
+.stage-panel { padding: 25px; border-radius: 15px; }
+.stage-header { margin-bottom: 18px; }
+.stage-header p { font-size: 15px; }
+.luma-note { margin: 14px 0 18px; padding: 13px 15px; }
+.luma-note p { font-size: 14px; line-height: 1.5; }
+.mission-aside { position: static; padding: 0; border: 0; background: transparent; }
+.mission-tip, .team-roles, .reflection-details { border: 1px solid #d8d4c8; border-radius: 12px; background: #f7f5ed; }
+.mission-tip summary, .team-roles summary, .reflection-details summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; padding: 13px 15px; cursor: pointer; list-style: none; }
+.mission-tip summary::-webkit-details-marker, .team-roles summary::-webkit-details-marker, .reflection-details summary::-webkit-details-marker { display: none; }
+.mission-tip summary::after, .team-roles summary::after, .reflection-details summary::after { content: '＋'; color: #5d765b; font-size: 18px; }
+.mission-tip[open] summary::after, .team-roles[open] summary::after, .reflection-details[open] summary::after { content: '−'; }
+.mission-tip summary .eyebrow { margin: 0 0 4px; color: #5b725c; }
+.mission-tip summary h3 { font-size: 15px; }
+.tip-toggle { color: #61756b; font-size: 11px; white-space: nowrap; }
+.mission-tip-body { padding: 0 15px 14px; }
+.mission-tip-body p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.mission-tip-body .small { margin-top: 8px; }
+.team-roles { margin: 18px 0; }
+.team-roles summary strong, .reflection-details summary strong { display: block; font-size: 15px; }
+.team-roles summary small, .reflection-details summary small { display: block; margin-top: 2px; color: #718078; font-size: 12px; }
+.team-roles > .small { padding: 0 15px; }
+.team-roles .role-grid { padding: 0 15px 15px; margin: 12px 0 0; }
+.role-card { padding: 13px; }
+.role-card h4 { font-size: 13px; }
+.role-card p { font-size: 11px; line-height: 1.45; }
+.reflection-details { margin: 18px 0; }
+.reflection-details .reflection-grid { padding: 0 15px; }
+.reflection-details > .small { padding: 0 15px 14px; }
+.reflection-details .field { font-size: 13px; }
+.reflection-details textarea { min-height: 82px; }
+.stage-actions { margin-top: 21px; padding-top: 18px; }
+
+@media (max-width: 800px) {
+  .hero { min-height: 0; padding: 31px 27px 16px; gap: 15px; }
+  .hero-copy { padding-bottom: 0; }
+  .hero-art, .scene-hero { min-height: 320px; }
+  .home-dashboard { margin-top: 14px; }
+  .mission-aside { order: -1; }
+}
+@media (max-width: 650px) {
+  .header { min-height: 62px; }
+  .hero { padding: 26px 19px 13px; }
+  .hero h1 { font-size: clamp(34px, 9.7vw, 46px); letter-spacing: -1.8px; }
+  .hero .intro { font-size: 15px; margin-bottom: 16px; }
+  .hero-cta-group { gap: 5px; }
+  .hero-story-link { min-height: 38px; }
+  .hero-tags { justify-content: flex-start; font-size: 10px; }
+  .hero-tag + .hero-tag { padding-left: 8px; margin-left: 8px; }
+  .hero-art, .scene-hero { min-height: 285px; }
+  .hero-bottom-strip { min-height: 73px; padding: 9px 6px; }
+  .hero-stat { padding-inline: 5px; }
+  .expedition-story-strip { margin-bottom: 12px; padding: 11px 12px; }
+  .expedition-story-strip p:not(.eyebrow) { font-size: 13px; }
+  .current-mission-panel, .expedition-status-panel, .resource-card { padding: 18px; }
+  .route { padding: 19px 14px 16px; }
+  .route-landscape { min-height: 0; }
+  .stage-panel { padding: 20px 16px; }
+  .mission-stepper { width: 100%; margin-inline: 0; padding-inline: 0; }
+  .mission-tip summary, .team-roles summary, .reflection-details summary { min-height: 56px; padding: 11px 12px; }
+  .mission-tip-body { padding: 0 12px 12px; }
+  .team-roles .role-grid, .reflection-details .reflection-grid { padding-inline: 12px; }
+  .reflection-details > .small, .team-roles > .small { padding-inline: 12px; }
+}
